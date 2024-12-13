@@ -10,7 +10,6 @@ import { useState } from "react";
 
 function OLComponent() {
     const mapRef = useRef(null);
-    const [visible, setVisible] = useState(false)
 
     const wmsLayers = [
         new TileLayer({
@@ -85,7 +84,6 @@ function OLComponent() {
                                     <input 
                                         type={"checkbox"}
                                         id={lyr.get("name")}
-                                        checked={lyr.get("visible")}
                                         onChange = {()=> ToggleLayerSwitch(lyr)}
                                     />
                                     {lyr.get("name")}
