@@ -14,3 +14,13 @@
     border-radius: 5px;
     border: 1px solid #FF8A65;
 }
+
+.ol-zoom {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    bottom: 50px !important;
+    left: 20px !important; 
+}

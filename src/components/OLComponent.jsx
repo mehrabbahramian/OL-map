@@ -5,8 +5,8 @@ import {fromLonLat} from "ol/proj"
 import { useEffect } from "react";
 import { useRef } from "react";
 import { Layer } from "iconsax-react";
+import { defaults as defaultControls } from "ol/control";
 import "./OLComponent.css"
-import { useState } from "react";
 
 function OLComponent() {
     const mapRef = useRef(null);
@@ -54,7 +54,8 @@ function OLComponent() {
             view: new View({
                 center: fromLonLat([51.389, 35.6892]),
                 zoom: 5
-            })
+            }),
+            controls: defaultControls({zoom: true, attribution: false, rotate:false})
         })
 
         wmsLayers.forEach((lyr)=>{
@@ -69,12 +70,13 @@ function OLComponent() {
     const ToggleLayerSwitch = (layer)=>{
         const newVisibility = !layer.get("visible");
         layer.setVisible(newVisibility);
+        console.log(newVisibility)
     }
 
     return (
         <>
         <div className="layer-switcher">
-            <Layer size="28" color="#FF8A65"/>
+            <Layer size="32" color="#FF8A65" variant="Bold"/>
             <div className="layer-switcher__content">
                 {wmsLayers.length > 0 && (
                     wmsLayers.map((lyr, index)=>{
@@ -85,6 +87,7 @@ function OLComponent() {
                                         type={"checkbox"}
                                         id={lyr.get("name")}
                                         onChange = {()=> ToggleLayerSwitch(lyr)}
+                                        checked= {lyr.get("visible")}
                                     />
                                     {lyr.get("name")}
                                 </label>
