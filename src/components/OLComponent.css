@@ -6,7 +6,7 @@
 }
 
 .layer-switcher__content{
-    display: none;
+    display: block;
     background-color: white;
     margin-top: 10px;
     padding: 10px;
